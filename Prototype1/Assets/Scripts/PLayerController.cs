@@ -1,8 +1,13 @@
-﻿using System.Collections;
+﻿/*
+ * Conrad Mayer
+ * 1/24/22
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PLayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float speed, turnSpeed, horizontalInput, forwardInput;
 
