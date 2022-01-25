@@ -3964,6 +3964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBox: {fileID: 124943909}
+  targetScore: 5
 --- !u!54 &949558249
 Rigidbody:
   m_ObjectHideFlags: 0
