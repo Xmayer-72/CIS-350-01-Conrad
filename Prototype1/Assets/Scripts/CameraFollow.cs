@@ -19,8 +19,8 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
         //if (transform.position != player.transform.position + offset)
-        Vector3 diff = transform.position - (player.transform.position + offset);
+        Vector3 diff = (player.transform.position + offset) - transform.position;
 
-        transform.Translate(-diff * Time.deltaTime * speed);
+        transform.Translate(diff * Time.deltaTime * speed);
     }
 }
