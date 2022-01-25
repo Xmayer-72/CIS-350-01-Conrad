@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     public static int score;
 
     public Text textBox;
+    public int targetScore;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class ScoreManager : MonoBehaviour
             textBox.text = "Score: " + score;
         }
 
-        if (score >= 3)
+        if (score >= targetScore)
         {
             won = true;
             gameOver = true;
