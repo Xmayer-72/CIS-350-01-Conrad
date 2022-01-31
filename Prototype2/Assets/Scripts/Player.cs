@@ -13,10 +13,15 @@ public class Player : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
 
         //move player based on input
-        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed, Space.World);
+
+        //rotate based on horizontal input
+
+        // Rotate the cube by converting the angles into a quaternion.
+        transform.rotation = Quaternion.Euler(0, horizontalInput*25, 0);
 
         //keep player bounded
-        if(transform.position.x < -xRange || transform.position.x > xRange)
+        if (transform.position.x < -xRange || transform.position.x > xRange)
         {
             transform.position = new Vector3(xRange * Mathf.Sign(horizontalInput), transform.position.y, transform.position.z);
         }
