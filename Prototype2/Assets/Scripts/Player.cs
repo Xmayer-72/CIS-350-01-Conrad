@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+ * Conrad Mayer
+ * 1/31/22
+ * Prototype2
+ * control player and movement therein
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,14 +23,12 @@ public class Player : MonoBehaviour
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed, Space.World);
 
         //rotate based on horizontal input
-
-        // Rotate the cube by converting the angles into a quaternion.
         transform.rotation = Quaternion.Euler(0, horizontalInput*25, 0);
 
         //keep player bounded
         if (transform.position.x < -xRange || transform.position.x > xRange)
         {
-            transform.position = new Vector3(xRange * Mathf.Sign(horizontalInput), transform.position.y, transform.position.z);
+            transform.position = new Vector3(xRange * Mathf.Sign(transform.position.x), transform.position.y, transform.position.z);
         }
     }
 }
