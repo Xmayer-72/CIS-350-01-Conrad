@@ -13,11 +13,22 @@ public class DestroyOutOfBounds : MonoBehaviour
 {
     public float upperbound, lowerbound;
 
+    private HealthManager healthManager;
+
+    private void Start()
+    {
+        healthManager = GameObject.FindGameObjectWithTag("Health").GetComponent<HealthManager>();
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(transform.position.z < lowerbound|| transform.position.z > upperbound)
         {
+            if (transform.position.z < 0)
+            {
+                healthManager.health--;
+            }
             Destroy(gameObject);
         }
     }

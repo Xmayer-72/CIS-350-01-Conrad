@@ -6,14 +6,14 @@ using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
+    public HealthManager healthManager;
     public GameObject[] prefabs;
-    public bool gameOver;
 
     private float leftBound = -14, rightBound = 14, zPosition = 20;
 
     void Start()
     {
-        gameOver = false;
+        healthManager = GameObject.FindGameObjectWithTag("Health").GetComponent<HealthManager>();
         StartCoroutine(SpawnRandomPrefabCoroutine());
     }
 
@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
 
-        while (!gameOver)
+        while (!healthManager.gameOver)
         {
             SpawnRandomPrefab();
 

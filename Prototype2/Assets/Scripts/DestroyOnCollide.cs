@@ -11,8 +11,16 @@ using UnityEngine;
 
 public class DestroyOnCollide : MonoBehaviour
 {
+    private DisplayScore displayScoreScript;
+
+    private void Start()
+    {
+        displayScoreScript = GameObject.FindGameObjectWithTag("DisplayScoreTag").GetComponent<DisplayScore>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        displayScoreScript.score++;
         Destroy(other.gameObject);
         Destroy(gameObject);
     }

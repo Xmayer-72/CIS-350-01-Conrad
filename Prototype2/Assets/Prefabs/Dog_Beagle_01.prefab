@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upperbound: 20
-  lowerbound: -10
+  lowerbound: -5
 --- !u!1 &6409610145733876855
 GameObject:
   m_ObjectHideFlags: 0

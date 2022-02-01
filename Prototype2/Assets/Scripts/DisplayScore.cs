@@ -7,14 +7,13 @@ public class DisplayScore : MonoBehaviour
 {
     public Text textBox;
 
-    public int score;
+    public int score = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
-
         textBox = GetComponent<Text>();
+        textBox.text = "Score: 0";
     }
 
     // Update is called once per frame
