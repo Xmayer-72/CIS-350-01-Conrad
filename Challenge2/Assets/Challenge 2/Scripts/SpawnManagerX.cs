@@ -1,10 +1,17 @@
-﻿using System.Collections;
+﻿/*
+ * Conrad Mayer
+ * Challenge 2
+ * spawns balls
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManagerX : MonoBehaviour
 {
     public GameObject[] ballPrefabs;
+
+    private HealthScoreManager healthScore;
 
     private float spawnLimitXLeft = -22;
     private float spawnLimitXRight = 7;
@@ -16,7 +23,21 @@ public class SpawnManagerX : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRandomBall", startDelay, spawnInterval);
+        //start coroutine
+        StartCoroutine(SpawnRandomBallCoroutine());
+
+        healthScore = GameObject.FindGameObjectWithTag("HealthScore").GetComponent<HealthScoreManager>();
+    }
+
+    IEnumerator SpawnRandomBallCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+
+        while (!healthScore.gameOver)
+        {
+            SpawnRandomBall();
+            yield return new WaitForSeconds(Random.Range(3, 5));
+        }
     }
 
     // Spawn random ball at random x position at top of play area

@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * Conrad Mayer
+ * Challenge 2
+ * destroys objects when out of bounds
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +11,13 @@ public class DestroyOutOfBoundsX : MonoBehaviour
 {
     private float leftLimit = -30;
     private float bottomLimit = -5;
+
+    private HealthScoreManager healthScore;
+
+    void Start()
+    {
+        healthScore = GameObject.FindGameObjectWithTag("HealthScore").GetComponent<HealthScoreManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,6 +31,7 @@ public class DestroyOutOfBoundsX : MonoBehaviour
         // Destroy balls if y position is less than bottomLimit
         else if (transform.position.y < bottomLimit)
         {
+            healthScore.Damage();
             Destroy(gameObject);
         }
 
