@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * Conrad Mayer
+ * Prototype 3
+ * increments score when colided with by player
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
