@@ -10,6 +10,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody self;
+    private Animator PlayerAnim;
+
+    public ParticleSystem explosionParticle, mudParticle;
+
+    public AudioClip jumpSound, crashSound;
+
+    private AudioSource playerAudio;
 
     public float jumpForce, gravityMod;
     public ForceMode jumpForceMode;
@@ -20,6 +27,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         self = gameObject.GetComponent<Rigidbody>();
+
+        PlayerAnim = GetComponent<Animator>();
+        PlayerAnim.SetFloat("Speed_f", 1f);
+        PlayerAnim.SetInteger("DeathType_int", 2);
+
+        playerAudio = GetComponent<AudioSource>();
 
         if (Physics.gravity.y > -10)
         {
@@ -34,6 +47,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && onGround && !gameOver)
         {
+            mudParticle.Stop();
+
+            PlayerAnim.SetTrigger("Jump_trig");
+
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
+
             self.AddForce(Vector3.up * jumpForce, jumpForceMode);
             onGround = false;
         }
@@ -44,9 +63,17 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") && !gameOver)
         {
             onGround = true;
+            mudParticle.Play();
         }
         else if (collision.gameObject.CompareTag("Obstacle") && !gameOver)
         {
+            explosionParticle.Play();
+            mudParticle.Stop();
+
+            playerAudio.PlayOneShot(crashSound, 1f);
+
+            PlayerAnim.SetBool("Death_b",true);
+            
             gameOver = true;
             Debug.Log("Game Over");
         }
