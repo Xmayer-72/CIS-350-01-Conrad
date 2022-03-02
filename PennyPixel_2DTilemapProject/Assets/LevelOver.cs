@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Conrad Mayer
+ * Assignment 5a
+ * sets game over text when reached end
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

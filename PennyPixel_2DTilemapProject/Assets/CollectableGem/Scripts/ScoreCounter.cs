@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Conrad Mayer
+ * Assignment 5a
+ * Records when collected the gems and increments score
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
