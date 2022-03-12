@@ -6,7 +6,7 @@ public class MouseLook : MonoBehaviour
 {
     public float mouseSensitivity = 100f;
     public GameObject player;
-    private float verticalLookRotation = 0f;
+    private float verticalLookRotation = 90f;
 
     // Update is called once per frame
     void Update()
