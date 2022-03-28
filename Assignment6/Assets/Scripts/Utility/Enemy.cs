@@ -6,13 +6,17 @@ public abstract class Enemy : MonoBehaviour
 {
     public GameObject Player;
 
+    public Light Glow;
+
     public int health;
 
     protected float speed, attackDistance;
 
+    public float attackDelay = 0;
+
     protected abstract void Attack();
 
-    public virtual void damage(int damage)
+    public void Damage(int damage)
     {
         health -= damage;
 

@@ -28,6 +28,6 @@ public class FollowPlayer : MonoBehaviour
         transform.position = plane.transform.position + offset;
 
         //coppy the rotation of the plane in one plane | personal preference
-        //transform.rotation = Quaternion.LookRotation(transform.forward, plane.transform.up);
+        transform.rotation = Quaternion.LookRotation(transform.forward, plane.transform.up);
     }
 }
