@@ -11,7 +11,7 @@ public class Byte : Enemy
     {
         speed = 3;
         health = 15;
-        attackDistance = 5;
+        attackDistance = 2;
 
         Glow = GetComponentInChildren<Light>();
 

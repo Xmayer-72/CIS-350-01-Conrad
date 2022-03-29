@@ -6,6 +6,8 @@ public class SpawnEnemy : MonoBehaviour
 {
     public Enemy[] enemies;
 
+    [SerializeField]
+    private float minSeconds, maxSeconds;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,7 @@ public class SpawnEnemy : MonoBehaviour
         while (true)
         {
             createEnemies();
-            yield return new WaitForSeconds(Random.Range(1,5));
+            yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
         }
     }
 
@@ -33,7 +35,7 @@ public class SpawnEnemy : MonoBehaviour
         Enemy toSummon = enemies[Random.Range(0, enemies.Length)];
         int summonAngle = Random.Range(1, 361);
 
-        Instantiate(toSummon, angleToVector(summonAngle, 50), new Quaternion(0, 0, 0, 0));
+        Instantiate(toSummon, angleToVector(summonAngle, 50), new Quaternion(0, 0, 0, 0),transform.parent);
     }
 
     Vector3 angleToVector(int angle, int radius)

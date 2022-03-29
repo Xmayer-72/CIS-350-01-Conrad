@@ -809,7 +809,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 175, y: 40}
+  m_SizeDelta: {x: 175, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1215983621
 MonoBehaviour:
@@ -1873,9 +1873,13 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Use WASD to move and ESC to pause
+  m_Text: 'Use WASD to move
+
+    ESC to pause
+
+    Mouse1 to attack'
 --- !u!222 &1977998625
 CanvasRenderer:
   m_ObjectHideFlags: 0
