@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Byte : Enemy
 {
-    public GameObject projectile;
+    //public GameObject projectile;
 
     // Start is called before the first frame update
     void Start()
     {
         speed = 3;
         health = 15;
-        attackDistance = 25;
+        attackDistance = 5;
 
         Glow = GetComponentInChildren<Light>();
 
@@ -27,7 +27,7 @@ public class Byte : Enemy
         {
             Attack();
             Glow.gameObject.SetActive(false);
-            attackDelay = 30;
+            attackDelay = 10;
         }
         else
         {
@@ -44,10 +44,10 @@ public class Byte : Enemy
         }
     }
 
-    //ranged Attack
+    //melee attack
     protected override void Attack()
     {
-        //shoots projectile at player
-        Instantiate(projectile, transform.position, transform.rotation);
+        //bit attacks and deals damage
+        Player.GetComponent<Movement>().Damage(10);
     }
 }

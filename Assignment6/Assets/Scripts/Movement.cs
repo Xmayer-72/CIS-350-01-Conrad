@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed = 20;
+    public float speed = 20, attackDelay;
     public int health = 30;
     public GameObject playerModel;
-    public GameObject projectile;
-    public Camera cam;
+    public ParticleSystem boom;
 
     // Update is called once per frame
     void Update()
@@ -18,9 +17,26 @@ public class Movement : MonoBehaviour
         transform.Translate(movement * speed * Time.deltaTime);
         playerModel.transform.LookAt(transform.position + movement);
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && attackDelay <= 0)
         {
-            Instantiate(projectile, transform.position, playerModel.transform.rotation);
+            boom.Play();
+
+            attackDelay = 2;
+
+            Collider[] Targets = Physics.OverlapSphere(transform.position, 5);
+
+            foreach (Collider target in Targets)
+            {
+                if (target.GetComponent<Enemy>() != null)
+                {
+                    target.GetComponent<Enemy>().Damage(10);
+                }
+            }
+        }
+
+        if (attackDelay > 0)
+        {
+            attackDelay -= Time.deltaTime;
         }
     }
 
