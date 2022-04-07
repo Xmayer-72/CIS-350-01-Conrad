@@ -22,6 +22,6 @@ public class PlayerController : MonoBehaviour
     {
         float verticalInput = Input.GetAxis("Vertical");
 
-        rb.AddForce(focal.transform.forward * movementForce * verticalInput, ForceMode.Force);
+        rb.AddForce(movementForce * verticalInput * focal.transform.forward, ForceMode.Force);
     }
 }
