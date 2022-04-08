@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private GameObject focal;
     public GameObject powerUpIndicator;
 
-    public bool hasPowerUp;
+    public bool hasPowerUp, gameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(movementForce * verticalInput * focal.transform.forward, ForceMode.Force);
 
         powerUpIndicator.transform.position = transform.position + new Vector3(0, -0.4f, 0);
+
+        if (transform.position.y < -10)
+        {
+            gameOver = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

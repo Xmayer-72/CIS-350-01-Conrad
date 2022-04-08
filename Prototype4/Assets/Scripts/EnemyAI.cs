@@ -22,5 +22,10 @@ public class EnemyAI : MonoBehaviour
     {
         Vector3 looking = (player.transform.position - transform.position).normalized;
         enemyRb.AddForce(looking * speed);
+
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }
